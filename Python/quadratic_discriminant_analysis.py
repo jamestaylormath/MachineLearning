@@ -9,6 +9,15 @@ def quad_discrim_fn(x,means,cov,cov_det,cov_inv,prior):
     return (-1/2)*math.log(cov_det) + (-1/2)*((x-means).T @ cov_inv @ (x-means)) + math.log(prior)
         
 class QDA():
+    """Quadratic discriminant analysis model. Assumes our data comes from two populations, wherein 
+    for each the pdf of X = (X_1, ..., X_p) is multivariate normal. Assigns data x to the population
+    whose quadratic discriminant function is largest when evaluated at x.
+
+    Parameters:
+        priors: [float, float]
+            Prior probabilities for the two populations. Should sum to 1.
+    """
+
     def __init__(self, priors=[0.5,0.5]):
         self.priors = priors
     

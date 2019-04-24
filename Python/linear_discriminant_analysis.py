@@ -5,6 +5,15 @@ def get_sample_covariance_matrix(X,means):
     return (1/(X.shape[0]-1))*((X-means).T @ (X-means))
 
 class LDA():
+    """Linear discriminant analysis model. Assumes our data comes from two populations, wherein 
+    for each the pdf of X = (X_1, ..., X_p) is multivariate normal with a common covariance matrix. 
+    Assigns data x to the population whose linear score function is largest when evaluated at x.
+
+    Parameters:
+        priors: [float, float]
+            Prior probabilities for the two populations. Should sum to 1.
+    """
+
     def __init__(self, priors=[0.5,0.5]):
         self.priors = priors
     
