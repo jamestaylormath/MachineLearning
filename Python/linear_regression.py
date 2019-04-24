@@ -6,6 +6,10 @@ def insert_ones(X):
     return np.c_[np.ones(X.shape[0]), X]
 
 class MLR():
+    """Multivariate linear regression model. Models the (linear) relationship between 
+    response vector Y and predictor matrix X.
+    """
+
     def __init__(self):
         pass
     
