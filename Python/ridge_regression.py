@@ -6,6 +6,18 @@ def insert_ones(X):
     return np.c_[np.ones(X.shape[0]), X]
 
 class RidgeRegression():
+    """Linear regression with an L2 regularization term that penalizes large values of the model's
+    non-intercept coefficients. Used to mitigate the problem with standard linear regression where 
+    a large positive coefficient for one variable can be offset by a large negative coefficient for 
+    a correlated variable.
+
+    Parameters:
+        alpha (float): 
+            L2 regularization parameter. For standard linear regression, use alpha = 0. Larger values 
+            of alpha yield more regularization (i.e., force the coefficients to have a smaller L2 norm)
+            and decrease model variance. 
+    """
+
     def __init__(self, alpha=1):
         self.alpha = alpha
     
