@@ -34,6 +34,19 @@ def display_gradascent_info(step, learn, grad, beta, beta_change, likelihood, be
     print('\n')
     
 class LogisticRegression():
+    """Logistic regression model whose coefficients are approximated using gradient ascent.
+    Parameters:
+        reg_lambda (float): 
+            L2 regularization parameter (default is no L2 regularization).
+        learn (float): 
+            Gradient ascent's initial learning rate.
+        precision (float): 
+            Governs how much our coefficient (beta) estimates need to have stabilized before we 
+            end the gradient ascent. 
+        max_iters (int): 
+            Maximum number of gradient ascent steps to perform before stopping.
+    """
+
     def __init__(self, reg_lambda = 0, learn = 0.5, precision = 0.001, max_iters = 1000):
         self.reg_lambda = reg_lambda
         self.learn = learn
@@ -45,7 +58,7 @@ class LogisticRegression():
         learn = self.learn #set learn = initial learning rate
         beta_change = 1 #Initial value; just needs to be > precision
     
-        X = insert_ones(X) #stick a column of 1's to the front of X
+        X = insert_ones(X)
         self.beta = np.ones(X.shape[1]) #initial value of coefficient vector
         likelihood = loglikelihood(self.beta, X, Y, self.reg_lambda) #Initial value of loglikelihood
         can_stop = False #Can't stop gradient ascent yet, we've barely started!
